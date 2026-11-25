@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies and run tests
         run: |
           pip install -r requirements.txt
-          pytest
+          PYTHONPATH=. pytest
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
