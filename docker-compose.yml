@@ -1,0 +1,22 @@
+services:
+  web:
+    build: .
+    container_name: url-shortener-web
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    restart: always
+
+  redis:
+    image: redis:7-alpine
+    container_name: url-shortener-redis
+    volumes:
+      - redis_data:/data
+    restart: always
+
+volumes:
+  redis_data:
